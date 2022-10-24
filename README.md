@@ -25,7 +25,7 @@ THEN I am again presented with current and future conditions for that city
 
 
 ## Project Preview
-
+https://github.com/JFritsch04/06-weather-dashboard/blob/main/assets/127.0.0.1_5500_homework_06-weather-dashboard_index.html.png
 
 
 ### Installation
