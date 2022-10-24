@@ -2,7 +2,7 @@ let cityName;
 let storedCity = JSON.parse(localStorage.getItem("City")) || [];
 
 for (let i = 0; i < storedCity.length; i++) {
-    var addCityButtons = document.createElement("button");
+    const addCityButtons = document.createElement("button");
     addCityButtons.setAttribute("class", "cityNames");
     addCityButtons.textContent = storedCity[i];
     console.log(storedCity[i]);
@@ -10,7 +10,7 @@ for (let i = 0; i < storedCity.length; i++) {
     addWeatherEventListener();
 }
 
-var fetchWeather = function (cityName) {
+const fetchWeather = function (cityName) {
     let weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=908d66bc443a59edcf38648405a06695";
     fetch(weatherAPI)
         .then(function (response) {
@@ -28,7 +28,7 @@ var fetchWeather = function (cityName) {
 
 // Get the preset buttons to return weather information
 function addWeatherEventListener() {
-    var presetCityButtons = document.querySelectorAll(".cityNames");
+    const presetCityButtons = document.querySelectorAll(".cityNames");
     presetCityButtons.forEach(function (btn) {
         btn.addEventListener("click", function (e) {
             cityName = e.target.innerText;
@@ -38,14 +38,14 @@ function addWeatherEventListener() {
 }
 
 // Search button
-var searchButton = document.getElementById("searchBtn");
+const searchButton = document.getElementById("searchBtn");
 searchButton.addEventListener("click", function () {
     cityName = $("#cityInput").val();
     fetchWeather(cityName);
     console.log(storedCity);
     storedCity.push(cityName);
 
-    var addNewButton = document.createElement("button");
+    const addNewButton = document.createElement("button");
     addNewButton.setAttribute("class", "cityNames");
     addNewButton.textContent = cityName;
     $("#presetCities").append(addNewButton);
@@ -64,9 +64,9 @@ let toDateTime = function (time) {
     return mm + '/' + dd + '/' + y;
 }
 
-// Create a container that contains the city, date, temp, wind, humidity and UV index
-var getCityInfo = function (lat, lon) {
-    let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=908d66bc443a59edcf38648405a06695' + '&units=metric'
+// Create a container with city, date, temp, wind, humidity and UV index
+const getCityInfo = function (lat, lon) {
+    let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=908d66bc443a59edcf38648405a06695' + '&units=metric';
     fetch(uvApi)
         .then(function (response) {
             return response.json();
@@ -80,22 +80,22 @@ var getCityInfo = function (lat, lon) {
 
             if (data.current.uvi <= 2) {
                 $(".btnColor").attr("class", "btn btn-success");
-            };
+            }
             if (data.current.uvi > 2 && data.current.uvi <= 5) {
                 $(".btnColor").attr("class", "btn btn-warning");
-            };
+            }
             if (data.current.uvi > 5) {
                 $(".btnColor").attr("class", "btn btn-danger");
-            };
+            }
 
         });
 };
 
 // TODO: Create a container with a 5-day forecast
-var fiveDayForecast = function (data) {
+const fiveDayForecast = function (data) {
     $('.fiveDayForecast').empty();
     for (let i = 1; i < 6; i++) {
-        var day = $("<div class='day'><div />")
+        const day = $("<div class='day'><div />")
         $(day).append(toDateTime(data.daily[i].dt));
         $(day).append(`<img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/>`);
         $(day).append("<p>Temp: " + data.daily[i].temp.day + " °C</p>");
