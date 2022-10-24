@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header>
+         <h1> <i class="fa-solid fa-cloud-sun"></i> Weather Dashboard</h1>
+        </header>
+
+
+        <div class="row">
+            <div class="sidesearch col-md-4">
+                <!-- Search for a City sidebar -->
+                <div class="mt-2" id="response-container">
+                    <label id="searchTitle" for="cityInput"> <i class="fa-solid fa-magnifying-glass"></i> Search for a City </label>
+                    <input type="text" placeholder="St. Paul, Minnesota" id="cityInput" name="cityInput"><br>
+                    <button id="searchBtn">Search</button>
+                </div>
+                <div class=lineBreak></div>
+                <div class="list-group"></div>
+                <!-- Add preset city names -->
+                <div id="presetCities"></div>
+            </div>
+
+
+            <!-- City temp, wind, humidity, and UV index -->
+            <div class="weatherbox col-md-8">
+                <div class="row p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="cityDate info">{CITY HERE} {MM/DD/YYYY}</div>
+                            <br>
+                            <span class="temperature info"><i class="fa-solid fa-temperature-half"></i>{X}°C</span>
+                            <br>
+                            <span class="wind info"><i class="fa-solid fa-wind"></i>{WIND VALUE} MPH</span>
+                            <br>
+                            <span class="humidity info"><i class="fa-solid fa-temperature-arrow-up"></i>{HUMIDITY VALUE} %</span>
+                            <br>
+                            <span class="uvIndex info"><i class="fa-solid fa-sun"></i>{UV INDEX VALUE}</span>
+                        </div>
+                    </div>
+                    <!-- 5-Day Forecast -->
+                    <div class="row forecast">
+                        <h4>5-Day Forecast:</h2>
+                    </div>
+                </div>
+                <div class="fiveDayForecast row"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./assets/script.js"></script>
+    <script src="https://kit.fontawesome.com/78c85e14f7.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
